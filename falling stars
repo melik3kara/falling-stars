@@ -1,0 +1,36 @@
+public static void main(String[] args) 
+    {
+        Scanner inp = new Scanner (System.in);
+        int max = -1;
+        System.out.print("enter a num: ");
+        String num = inp.next();
+        for (int i = 0; i < num.length(); i++) //to find max repetative star sequence
+        {
+            if(num.charAt(i)-'0'> max){
+                max = num.charAt(i)-'0';
+            }
+        }
+        for (int i = 0; i < max; i++) //first for loop determines y axis
+        {
+            for (int j = 0; j < num.length(); j++) //second for loop determines x axis
+            {
+                int starLn = Integer.valueOf(num.substring(j, j+1));
+                if(starLn==0)
+                {
+                    System.out.print(" ");
+                }
+                if(starLn>0) //in the if statement code will decrease the number of star that falls
+                {
+                    starLn --;
+                    System.out.print("*");
+                    num = num.substring(0,j) + starLn + num.substring(j + 1);
+                }
+            }
+            if(Integer.valueOf(num)>0)
+            {
+                System.out.println();
+            }
+        }
+        inp.close();
+    } 
+}
